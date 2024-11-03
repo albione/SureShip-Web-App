@@ -1,0 +1,64 @@
+<?php
+    @ $db = new mysqli('localhost', 'root', '', 'sureship');
+
+    if (mysqli_connect_errno()) {
+        echo "Error: Could not connect to database.  Please try again later.";
+        exit;
+    }
+
+    function getName() {
+        global $db;
+        $query = "SELECT prod_name FROM products";
+        $result = $db->query($query);
+        $nameData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $nameData[] = $row['prod_name'];
+        }
+
+        $result->free();
+        return $nameData;
+    }
+
+    function getPrice() {
+        global $db;
+        $query = "SELECT price FROM products";
+        $result = $db->query($query);
+        $priceData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $priceData[] = $row['price'];
+        }
+
+        $result->free();
+        return $priceData;
+    }
+
+    function getRating() {
+        global $db;
+        $query = "SELECT rating FROM products";
+        $result = $db->query($query);
+        $ratingData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $ratingData[] = $row['rating'];
+        }
+
+        $result->free();
+        return $ratingData;
+    }
+
+    function getImgPath() {
+        global $db;
+        $query = "SELECT img_path FROM products";
+        $result = $db->query($query);
+        $imgPathData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $imgPathData[] = $row['img_path'];
+        }
+
+        $result->free();
+        return $imgPathData;
+    }
+?>
