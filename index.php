@@ -1,5 +1,6 @@
 <?php
   require_once 'getProdData.php';
+  $prodID = getProdID();
   $name = getName();
   $price = getPrice();
   $rating = getRating();
@@ -11,7 +12,7 @@
   <head>
     <title>SureShip</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="wrapper">
@@ -22,7 +23,7 @@
         </nav>
         <div id="titlerow">
           <h1>SureShip</h1>
-          <input type="text" placeholder="Search for products..." size="50%" id="searchbar" />
+          <input type="text" placeholder="Search for products..." size="60%" id="searchbar" />
           <!-- <img src="assets/magnify-custom.png" width="30" alt="search" /> -->
           <img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/>
         </div>
@@ -31,11 +32,13 @@
         <h2>Product List</h2>
         <?php
           for ($i = 0; $i < count($name); $i++) {
+            echo "<a href='products.php?prodID=$prodID[$i]'>";
             echo "<div class='card'>";
             echo "<img src='$imgPath[$i]' width='100%' />";
             echo "<h3>$name[$i]</h3>";
             echo "<p>\$$price[$i] &nbsp; &#9733;$rating[$i]</p>";
             echo "</div>";
+            echo "</a>";
           }
         ?>
       </div>

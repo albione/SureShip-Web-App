@@ -6,6 +6,20 @@
         exit;
     }
 
+    function getProdID() {
+        global $db;
+        $query = "SELECT prodID FROM products";
+        $result = $db->query($query);
+        $prodIDData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $prodIDData[] = $row['prodID'];
+        }
+
+        $result->free();
+        return $prodIDData;
+    }
+
     function getName() {
         global $db;
         $query = "SELECT prod_name FROM products";
@@ -60,5 +74,19 @@
 
         $result->free();
         return $imgPathData;
+    }
+
+    function getDescText() {
+        global $db;
+        $query = "SELECT desc_text FROM products";
+        $result = $db->query($query);
+        $descData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $descData[] = $row['desc_text'];
+        }
+
+        $result->free();
+        return $descData;
     }
 ?>
