@@ -5,9 +5,12 @@
   }
   require_once 'cartItems.php';
   $qty = getCartItemQty();
-  if (isset($_GET['empty'])) {
-    unset($_SESSION['cart']);
-    emptyCartItems(session_id());
+  if (isset($_GET['remove'])) {
+    $remove = $_GET['remove'];
+    $curProdID = $_GET['prodID'];
+    unset($_SESSION['cart'][$remove]);
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
+    emptyCartItems(session_id(), $curProdID);
     header('location: ' . $_SERVER['PHP_SELF'].'?'.SID);
     exit();
   }
@@ -49,23 +52,26 @@
                   <td><b>Price</b></td>
                   <td><b>Quantity</b></td>
                   <td><b>Subtotal</b></td>
+                  <td></td>
                 </tr>
                 <?php
                 $length = count($_SESSION['cart']);
                 for ($i = 0; $i < $length; $i++) {
                   $curPrice = doubleval($price[$_SESSION['cart'][$i]]);
                   $curTotal = $curPrice * $qty[$i];
+                  $curProdID = $prodID[$_SESSION['cart'][$i]];
                   echo"<tr>";
                   echo"<td><img src=".$imgPath[$_SESSION['cart'][$i]]." width='150px'/></td>";
                   echo"<td>".$name[$_SESSION['cart'][$i]]."</td>";
                   echo"<td>\$".number_format($curPrice, 2, '.', '')."</td>";
                   echo "<td><input type='text' name='qty".$i."' id='qty".$i."' value=$qty[$i] autocomplete='off' size='1' oninput='calPrice($i, $curPrice, $length)'/></td>";
                   echo "<td>\$ <input type='text' name='total".$i."' id='total".$i."' value='".number_format($curTotal, 2, '.', '')."' autocomplete='off' size='5' disabled/></td>";
+                  echo "<td><a href='".$_SERVER['PHP_SELF']."?remove=$i&prodID=$curProdID'><input type='button' id='remove".$i."' value='Remove'/></a></td>";
                   echo"</tr>";
                 }
                 ?>
                 <tr>
-                  <td colspan="5">
+                  <td colspan="6">
                     <div id="totalRow">
                       <label for="total">Total Price: $</label>
                       <input
@@ -76,7 +82,7 @@
                         size="5"
                         disabled
                         onload="return calTotal($length)"
-                      />
+                      />&nbsp;&nbsp;&nbsp;&nbsp;
                       <input
                         id="orderSubmit"
                         type="submit"
@@ -87,7 +93,6 @@
                 </tr>
               </form>
             </table>
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1"><input type='submit' id='emptyCart' value='Empty Cart' onclick=""/></a>
         </div>
         <footer>
             <p>&copy 2024 SureShip. All rights reserved.</p>

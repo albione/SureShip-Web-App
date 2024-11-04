@@ -28,7 +28,7 @@ A Project for the course IE4727 - Web App Design
 - [ ] F6.3: Username and password can be modified after login.
 - [ ] F6.4: Shipping address can be added/modified/removed after login.
 - [x] \* F7.1: Products can be added to the shopping cart.
-- [ ] \* F7.2: Products can be removed from the shopping cart.
+- [x] \* F7.2: Products can be removed from the shopping cart.
 - [x] \* F7.3: Purchase quantity can be modified in the shopping cart.
 - [x] \* F7.4: Order summary and total amount payable are shown before placing an order.
 - [ ] \* F8.1: An acknowledgement message is shown upon a successful purchase.

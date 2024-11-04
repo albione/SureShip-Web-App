@@ -16,14 +16,12 @@
         echo '<script>window.history.back();</script>';
     }
 
-    function emptyCartItems($SID) {
+    function emptyCartItems($SID, $curProdID) {
         global $db;
-        $query = "DELETE FROM cart_items WHERE sessionID = ?"; 
+        $query = "DELETE FROM cart_items WHERE sessionID = ? AND prodID = ?"; 
         $stmt = $db->prepare($query);
-        $stmt->bind_param("s", $SID);
+        $stmt->bind_param("si", $SID, $curProdID);
         $stmt->execute();
-
-        // echo '<script>window.history.back();</script>';
     }
 
     function getCartItemQty() {
