@@ -1,0 +1,71 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+  }
+  if (isset($_GET['buy'])) {
+    $_SESSION['cart'][] = $_GET['buy'];
+    header('location: ' . $_SERVER['PHP_SELF'].'?'.SID."&prodID=".$_GET['prodID']);
+    exit();
+  }
+  require_once 'getProdData.php';
+  $prodID = $_GET['prodID'];
+  $name = getName();
+  $price = getPrice();
+  $rating = getRating();
+  $imgPath = getImgPath();
+  $descText = getDescText();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SureShip</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <nav>
+          <a href="login.html">Login</a>&nbsp;&nbsp;&nbsp;
+          <a href="signUp.html">Sign Up</a>
+        </nav>
+        <div id="titlerow">
+          <a href="index.php" id="title"><h1>SureShip</h1></a>
+          <input type="text" placeholder="Search for products..." size="60%" id="searchbar" />
+          <!-- <img src="assets/magnify-custom.png" width="30" alt="search" /> -->
+          <a href="cart.php"><img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/></a>
+        </div>
+      </header>
+      <div class="content">
+        <h2>Product Details</h2>
+        <?php
+            $i = $prodID - 1;
+            echo "<form method='get' action='products.php' id='cartForm'>";
+            echo "<div class='details'>";
+            echo "<div class='details-image'>";
+            echo "<img src='$imgPath[$i]' width='100%'/>";
+            echo "</div>";
+            echo "<div class='details-info'>";
+            echo "<h2>$name[$i]</h2>";
+            echo "<p>Rating: &#9733;$rating[$i]</p>";
+            echo "<p id='price'>\$$price[$i]</p>";
+            echo "<p>$descText[$i]</p>";
+            echo "<label>Quantity: <input type='number' id='qty' min=1 value=1></label><br>";
+            echo "<input type='hidden' name='prodID' value='$prodID'/>";
+            echo "<input type='hidden' name='buy' value='$i'/>";
+            $button = in_array($i, $_SESSION['cart']) ? "<input type='submit' id='addCart' value='Added' disabled/></a>" 
+            : "<input type='submit' id='addCart' value='Add to Cart'/></a>";
+            echo $button;
+            echo "</div>";
+            echo "</div>";  
+            echo "</form>";    
+        ?>                      
+      </div>
+      <footer>
+        <p>&copy 2024 SureShip. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
