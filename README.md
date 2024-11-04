@@ -27,7 +27,7 @@ A Project for the course IE4727 - Web App Design
 - [ ] F6.2: User accounts can be logged in with the correct username and password.
 - [ ] F6.3: Username and password can be modified after login.
 - [ ] F6.4: Shipping address can be added/modified/removed after login.
-- [ ] \* F7.1: Products can be added to the shopping cart.
+- [x] \* F7.1: Products can be added to the shopping cart.
 - [ ] \* F7.2: Products can be removed from the shopping cart.
 - [ ] \* F7.3: Purchase quantity can be modified in the shopping cart.
 - [ ] \* F7.4: Order summary and total amount payable are shown before placing an order.
@@ -40,7 +40,7 @@ A Project for the course IE4727 - Web App Design
 ### The project must contain at least:
 
 - [ ] \* One (1) home page and four (4) but no more than ten (10) additional content pages, and every page must contain appropriate title.
-- [ ] \* One (1) table.
+- [x] \* One (1) table.
 - [ ] \* One (1) form with minimum four (4) fields.
 - [x] \* One (1) server-side generated web page.
 - [x] \* One (1) external CSS file with minimum four (4) styles.

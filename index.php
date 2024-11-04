@@ -1,4 +1,13 @@
 <?php
+  session_start();
+  if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+  }
+  if (isset($_GET['buy'])) {
+    $_SESSION['cart'][] = $_GET['buy'];
+    header('location: ' . $_SERVER['PHP_SELF'].'?'.SID);
+    exit();
+  }
   require_once 'getProdData.php';
   $prodID = getProdID();
   $name = getName();
@@ -22,10 +31,10 @@
           <a href="signUp.html">Sign Up</a>
         </nav>
         <div id="titlerow">
-          <h1>SureShip</h1>
+          <a href="index.php" id="title"><h1>SureShip</h1></a>
           <input type="text" placeholder="Search for products..." size="60%" id="searchbar" />
           <!-- <img src="assets/magnify-custom.png" width="30" alt="search" /> -->
-          <img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/>
+          <a href="cart.php"><img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/></a>
         </div>
       </header>
       <div class="content">

@@ -22,16 +22,19 @@ header {
 nav {
   float: right;
 }
-nav a {
+a {
   text-decoration: none;
 }
-nav a:link {
+a:link {
   color: white;
 }
-nav a:hover {
+a:hover {
   color: rgb(255, 255, 255, 0.5);
 }
-nav a:visited {
+#title:hover {
+  color: white;
+}
+a:visited {
   color: white;
 }
 #titlerow {
@@ -91,6 +94,7 @@ footer {
   padding: 2%;
   padding-bottom: 4%;
   margin: 1%;
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -129,4 +133,17 @@ footer {
   right: 25px;
   width: 100px;
   height: 30px;
+}
+table {
+  margin: auto;
+  margin-top: 2%;
+  border: none;
+  padding: 1%;
+}
+td {
+  padding: 10px;
+  border-color: #555555;
+}
+#totalRow {
+  float: right;
 }
