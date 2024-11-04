@@ -29,8 +29,8 @@ A Project for the course IE4727 - Web App Design
 - [ ] F6.4: Shipping address can be added/modified/removed after login.
 - [x] \* F7.1: Products can be added to the shopping cart.
 - [ ] \* F7.2: Products can be removed from the shopping cart.
-- [ ] \* F7.3: Purchase quantity can be modified in the shopping cart.
-- [ ] \* F7.4: Order summary and total amount payable are shown before placing an order.
+- [x] \* F7.3: Purchase quantity can be modified in the shopping cart.
+- [x] \* F7.4: Order summary and total amount payable are shown before placing an order.
 - [ ] \* F8.1: An acknowledgement message is shown upon a successful purchase.
 - [ ] \* F8.2: An email notification is sent upon a successful purchase.
 - [ ] \* F8.3: An error message is shown upon an unsuccessful purchase.

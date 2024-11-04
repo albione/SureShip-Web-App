@@ -40,32 +40,42 @@
         </div>
       </header>
         <div class="content">
-            <h2>Cart</h2>
+            <h2>Shopping Cart</h2>
             <table border="1">
               <form method="post" action="submitOrder.php" id="orderForm">
+                <tr>
+                  <td><b>Product Image</b></td>
+                  <td><b>Name</b></td>
+                  <td><b>Price</b></td>
+                  <td><b>Quantity</b></td>
+                  <td><b>Subtotal</b></td>
+                </tr>
                 <?php
-                for ($i = 0; $i < count($_SESSION['cart']); $i++) {
-                  $curPrice = $price[$_SESSION['cart'][$i]];
+                $length = count($_SESSION['cart']);
+                for ($i = 0; $i < $length; $i++) {
+                  $curPrice = doubleval($price[$_SESSION['cart'][$i]]);
+                  $curTotal = $curPrice * $qty[$i];
                   echo"<tr>";
                   echo"<td><img src=".$imgPath[$_SESSION['cart'][$i]]." width='150px'/></td>";
                   echo"<td>".$name[$_SESSION['cart'][$i]]."</td>";
-                  echo"<td>\$".$curPrice."</td>";
-                  echo "<td><input type='text' name='qty".$i."' id='qtyJava".$i."' value=$qty[$i] autocomplete='off' size='1' oninput='calPrice($i, $curPrice)'/></td>";
-                  echo "<td><input type='text' name='total".$i."' id='total".$i."' value='0.00' autocomplete='off' size='1' disabled/></td>";
+                  echo"<td>\$".number_format($curPrice, 2, '.', '')."</td>";
+                  echo "<td><input type='text' name='qty".$i."' id='qty".$i."' value=$qty[$i] autocomplete='off' size='1' oninput='calPrice($i, $curPrice, $length)'/></td>";
+                  echo "<td>\$ <input type='text' name='total".$i."' id='total".$i."' value='".number_format($curTotal, 2, '.', '')."' autocomplete='off' size='5' disabled/></td>";
                   echo"</tr>";
                 }
                 ?>
                 <tr>
-                  <td colspan="4">
+                  <td colspan="5">
                     <div id="totalRow">
-                      <label for="total">Total Price:</label>
+                      <label for="total">Total Price: $</label>
                       <input
                         type="text"
                         name="total"
                         id="total"
                         value="0.00"
-                        size="2"
+                        size="5"
                         disabled
+                        onload="return calTotal($length)"
                       />
                       <input
                         id="orderSubmit"
@@ -77,8 +87,7 @@
                 </tr>
               </form>
             </table>
-            <!-- <input type='submit' id='emptyCart' value='Empty Cart' onclick=""/> -->
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty Cart</a>
+            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1"><input type='submit' id='emptyCart' value='Empty Cart' onclick=""/></a>
         </div>
         <footer>
             <p>&copy 2024 SureShip. All rights reserved.</p>
