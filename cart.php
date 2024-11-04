@@ -3,8 +3,11 @@
   if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
   }
+  require_once 'cartItems.php';
+  $qty = getCartItemQty();
   if (isset($_GET['empty'])) {
     unset($_SESSION['cart']);
+    emptyCartItems(session_id());
     header('location: ' . $_SERVER['PHP_SELF'].'?'.SID);
     exit();
   }
@@ -20,6 +23,7 @@
     <title>SureShip</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="cartUpdate.js"></script>
   </head>
   <body>
     <div id="wrapper">
@@ -41,47 +45,15 @@
               <form method="post" action="submitOrder.php" id="orderForm">
                 <?php
                 for ($i = 0; $i < count($_SESSION['cart']); $i++) {
+                  $curPrice = $price[$_SESSION['cart'][$i]];
                   echo"<tr>";
                   echo"<td><img src=".$imgPath[$_SESSION['cart'][$i]]." width='150px'/></td>";
                   echo"<td>".$name[$_SESSION['cart'][$i]]."</td>";
-                  echo"<td>\$".$price[$_SESSION['cart'][$i]]."</td>";
+                  echo"<td>\$".$curPrice."</td>";
+                  echo "<td><input type='text' name='qty".$i."' id='qtyJava".$i."' value=$qty[$i] autocomplete='off' size='1' oninput='calPrice($i, $curPrice)'/></td>";
+                  echo "<td><input type='text' name='total".$i."' id='total".$i."' value='0.00' autocomplete='off' size='1' disabled/></td>";
                   echo"</tr>";
                 }
-                //   <td>
-                //     Regular house blend, decaffeinated coffee, or flavor of the
-                //     day.<br />
-                //     <input
-                //           type="radio"
-                //           id="java"
-                //           name="java"
-                //           value="'.$priceJava.'"
-                //           hidden
-                //           checked
-                //         />
-                //     <b>Endless Cup $'.$priceJava.'</b>
-                //   </td>
-                //   <td>
-                //     <input
-                //       type="text"
-                //       name="qtyJava"
-                //       id="qtyJava"
-                //       placeholder="0"
-                //       autocomplete="off"
-                //       oninput="calJava()"
-                //       size="1"
-                //     />
-                //   </td>
-                //   <td>
-                //     <input
-                //       type="text"
-                //       name="totalJava"
-                //       id="totalJava"
-                //       value="0.00"
-                //       size="2"
-                //       disabled
-                //     />
-                //   </td>
-
                 ?>
                 <tr>
                   <td colspan="4">
@@ -105,6 +77,7 @@
                 </tr>
               </form>
             </table>
+            <!-- <input type='submit' id='emptyCart' value='Empty Cart' onclick=""/> -->
             <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty Cart</a>
         </div>
         <footer>

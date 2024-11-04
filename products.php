@@ -4,8 +4,11 @@
     $_SESSION['cart'] = [];
   }
   if (isset($_GET['buy'])) {
+    require_once 'cartItems.php';
     $_SESSION['cart'][] = $_GET['buy'];
-    header('location: ' . $_SERVER['PHP_SELF'].'?'.SID."&prodID=".$_GET['prodID']);
+    $prodID = intval($_GET['prodID']);
+    $qty = intval($_GET['qty']);
+    insertCartItems(session_id(), $prodID, $qty);
     exit();
   }
   require_once 'getProdData.php';
@@ -52,11 +55,11 @@
             echo "<p>Rating: &#9733;$rating[$i]</p>";
             echo "<p id='price'>\$$price[$i]</p>";
             echo "<p>$descText[$i]</p>";
-            echo "<label>Quantity: <input type='number' id='qty' min=1 value=1></label><br>";
+            echo "<label>Quantity: <input type='number' id='qty' name='qty' min=1 value=1></label><br>";
             echo "<input type='hidden' name='prodID' value='$prodID'/>";
             echo "<input type='hidden' name='buy' value='$i'/>";
-            $button = in_array($i, $_SESSION['cart']) ? "<input type='submit' id='addCart' value='Added' disabled/></a>" 
-            : "<input type='submit' id='addCart' value='Add to Cart'/></a>";
+            $button = in_array($i, $_SESSION['cart']) ? "<input type='submit' id='addCart' value='Added' disabled/>" 
+            : "<input type='submit' id='addCart' value='Add to Cart'/>";
             echo $button;
             echo "</div>";
             echo "</div>";  

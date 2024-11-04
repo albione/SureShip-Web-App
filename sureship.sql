@@ -11,6 +11,13 @@ create table products
    desc_text longtext
 );
 
+create table cart_items
+(  cartItemID int unsigned not null auto_increment primary key,
+   sessionID varchar(255),
+   prodID int unsigned not null,
+   cartItemQty int unsigned not null
+);
+
 insert into products values
   (1, "iPhone 16", "Apple", 1299.00, 5.0, "2024-09-20", "assets/iphone-16.webp", "iPhone 16 is built for Apple Intelligence, the personal intelligence system that helps you write, express yourself and get things done effortlessly."),
   (2, "POCO X6 Pro 5G", "POCO", 369.00, 4.9, "2024-01-12", "assets/poco-x6-pro-5g.webp", "Expect stronger peak performance with upgraded ARMv9 architecture and 1+3+4 octa-core configuration."),
