@@ -10,7 +10,7 @@
     $curProdID = $_GET['prodID'];
     unset($_SESSION['cart'][$remove]);
     $_SESSION['cart'] = array_values($_SESSION['cart']);
-    emptyCartItems(session_id(), $curProdID);
+    removeCartItems(session_id(), $curProdID);
     header('location: ' . $_SERVER['PHP_SELF'].'?'.SID);
     exit();
   }
@@ -67,7 +67,9 @@
                   echo "<td><input type='text' name='qty".$i."' id='qty".$i."' value=$qty[$i] autocomplete='off' size='1' oninput='calPrice($i, $curPrice, $length)'/></td>";
                   echo "<td>\$ <input type='text' name='total".$i."' id='total".$i."' value='".number_format($curTotal, 2, '.', '')."' autocomplete='off' size='5' disabled/></td>";
                   echo "<td><a href='".$_SERVER['PHP_SELF']."?remove=$i&prodID=$curProdID'><input type='button' id='remove".$i."' value='Remove'/></a></td>";
-                  echo"</tr>";
+                  echo "<input type='text' name='price".$i."' id='price".$i."' value='".$curPrice."' hidden/>";
+                  echo "<input type='text' name='prodID".$i."' id='prodID".$i."' value='".$curProdID."' hidden/>";
+                  echo "</tr>";
                 }
                 ?>
                 <tr>

@@ -12,7 +12,7 @@ A Project for the course IE4727 - Web App Design
 - [ ] R4: Users can filter products by price range, brands and ratings.
 - [ ] R5: Users can sort products by price, date and ratings.
 - [ ] R6: Users can save their personal details for purchases.
-- [ ] \* R7: Users can place orders to make purchases.
+- [x] \* R7: Users can place orders to make purchases.
 - [ ] \* R8: Users are acknowledged after making successful purchases.
 - [ ] \* R9: Users are updated on their order status.
 
