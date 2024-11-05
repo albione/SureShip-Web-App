@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
     if ($result->num_rows >= 1) {
         echo "signup;error;Username already exists. Please choose a different username.";
     } else {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
 
-        $stmt->bind_param("sss", $username, $password, $email);
+        $stmt->bind_param("sss", $username, $hashedPassword, $email);
 
         if ($stmt->execute()) {
             echo "signup;success;Account creation successful! You can now log in.";
