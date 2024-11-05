@@ -43,7 +43,7 @@ a:visited {
   color: white;
   padding: 0.5em;
   border: none;
-  font-size: 0.9em;
+  font-size: 1em;
   text-decoration: underline;
 }
 .dropdown {

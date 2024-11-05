@@ -19,6 +19,20 @@
         $result->free();
         return $prodIDData;
     }
+    
+    function getProdIDByName($keyword) {
+        global $db;
+        $query = "SELECT prodID FROM products WHERE prod_name LIKE '%$keyword%'";
+        $result = $db->query($query);   
+        $prodIDData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $prodIDData[] = $row['prodID'];
+        }
+
+        $result->free();
+        return $prodIDData;
+    }
 
     function getName() {
         global $db;
