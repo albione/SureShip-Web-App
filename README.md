@@ -14,7 +14,7 @@ A Project for the course IE4727 - Web App Design
 - [ ] R6: Users can save their personal details for purchases.
 - [x] \* R7: Users can place orders to make purchases.
 - [x] \* R8: Users are acknowledged after making successful purchases.
-- [ ] \* R9: Users are updated on their order status.
+- [x] \* R9: Users are updated on their order status.
 
 ### Functional Requirements:
 
@@ -24,7 +24,7 @@ A Project for the course IE4727 - Web App Design
 - [ ] F4.1: Preferred filtering options can be selected via checkboxes.
 - [ ] F5.1: Preferred sorting options can be selected via a dropdown menu.
 - [ ] F6.1: User accounts can be created to save personal details.
-- [ ] F6.2: User accounts can be logged in with the correct username and password.
+- [x] F6.2: User accounts can be logged in with the correct username and password.
 - [ ] F6.3: Username and password can be modified after login.
 - [ ] F6.4: Shipping address can be added/modified/removed after login.
 - [x] \* F7.1: Products can be added to the shopping cart.
@@ -35,12 +35,12 @@ A Project for the course IE4727 - Web App Design
 - [x] \* F8.2: An email notification is sent upon a successful purchase.
 - [x] \* F8.3: An error message is shown upon an unsuccessful purchase.
 - [ ] F9.1: Order history and shipping status can be viewed after login.
-- [ ] \* F9.2: An email notification is sent upon an update on shipping status.
+- [x] \* F9.2: An email notification is sent upon an update on shipping status.
 
 ### The project must contain at least:
 
-- [ ] \* One (1) home page and four (4) but no more than ten (10) additional content pages, and every page must contain appropriate title.
+- [x] \* One (1) home page and four (4) but no more than ten (10) additional content pages, and every page must contain appropriate title.
 - [x] \* One (1) table.
-- [ ] \* One (1) form with minimum four (4) fields.
+- [x] \* One (1) form with minimum four (4) fields.
 - [x] \* One (1) server-side generated web page.
 - [x] \* One (1) external CSS file with minimum four (4) styles.

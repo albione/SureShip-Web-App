@@ -1,90 +1,93 @@
+body {
+  background-color: #fbfbfb;
+}
 #wrapper {
-    background-color: white;
-    color: #555555;
-    width: 100%;
-    margin: 0;
-    min-width: 800px;
-    text-align: center;
+  background-color: white;
+  color: #555555;
+  width: 100%;
+  margin: 0;
+  min-width: 800px;
+  text-align: center;
 }
 header {
-    background-color: white;
-    color: #ee4d2d;
-    font-family: "Georgia", "Times", "Times New Roman", serif;
-    padding-top: 1%;
-    padding-bottom: 0.5%;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
+  background-color: #fbfbfb;
+  color: #ee4d2d;
+  font-family: "Georgia", "Times", "Times New Roman", serif;
+  padding-top: 1%;
+  padding-bottom: 0.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 }
 a {
-    text-decoration: none;
-    color: #ee4d2d;
+  text-decoration: none;
+  color: #ee4d2d;
 }
 a:link {
-    color: #ee4d2d;
+  color: #ee4d2d;
 }
 a:visited {
-    color: #ee4d2d;
+  color: #ee4d2d;
 }
 .content a:visited {
-    color: #ee4d2d;
+  color: #ee4d2d;
 }
 #titlerow {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 0;
 }
 .header-title {
-    padding-left: 4rem;
-    font-size: 2.2em;
-    font-weight: bold;
-    margin: 0;
-    color: black;
+  padding-left: 4rem;
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: 0;
+  color: black;
 }
 .content {
-    padding: 0px;
-    text-align: left;
+  padding: 0px;
+  text-align: left;
 }
 .content a:link {
-    color: #ee4d2d;
-    text-decoration: underline;
-  }
+  color: #ee4d2d;
+  text-decoration: underline;
+}
 .form-container {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 25%;
-    left: 60%;
-    width: fit-content;
-    padding: 2rem;
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  width: fit-content;
+  padding: 2rem;
 }
 .form-title {
-    display: flex;
-    margin-bottom: 1rem;
-    font-size: 1.25em;
-    font-weight: bold;
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 .form-input {
-    display: flex;
-    margin: 1rem 0;
-    padding: 1rem 1rem;
+  display: flex;
+  margin: 1rem 0;
+  padding: 1rem 1rem;
 }
 .form-button {
-    display: flex;
-    background-color: #ee4d2d;
-    color: white;
-    font-size: 1.1em;
-    width: 100%;
-    padding: 1rem 0;
-    border: unset;
+  display: flex;
+  background-color: #ee4d2d;
+  color: white;
+  font-size: 1.1em;
+  width: 100%;
+  padding: 1rem 0;
+  border: unset;
 }
 .form-button:hover {
-    background-color: #ee755d;
-    cursor: pointer;
+  background-color: #ee755d;
+  cursor: pointer;
 }
 .form-footer {
-    margin-top: 2.5rem;
-    text-align: center;
-    font-size: 0.9em;
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.9em;
 }
