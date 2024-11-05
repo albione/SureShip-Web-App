@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+require_once 'cartItems.php';
+emptyCartItems(session_id());
+
 unset($_SESSION['username']);
 
 // Kill session, also delete the session cookie.

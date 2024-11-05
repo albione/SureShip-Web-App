@@ -43,7 +43,7 @@ a:visited {
   color: white;
   padding: 0.5em;
   border: none;
-  font-size: 0.9em;
+  font-size: 1em;
   text-decoration: underline;
 }
 .dropdown {
@@ -101,6 +101,10 @@ a:visited {
 }
 .content a:visited {
   color: #555555;
+}
+.sort {
+  text-align: right;
+  margin-bottom: 20px;
 }
 .card {
   border: 1px solid #555555;
