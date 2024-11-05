@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if ($password == $user['password']) {
-            //$token = $user['username'];
+            $username = $user['username'];
             $_SESSION['username'] = $user['username'];
             //$_SESSION['token'] = $token;
 
@@ -28,13 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //echo json_encode(["status" => "success", "token" => $token]);
 
             // Return plain text instead
-            echo "success;$token";
+            echo "success;$username";
         } else {
             //echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
             echo "error;Invalid credentials";
         }
     } else {
-        echo json_encode(["status" => "error", "message" => "User not found"]);
+        //echo json_encode(["status" => "error", "message" => "User not found"]);
+        echo "error;User not found";
     }
+    
+    $stmt->close();
+    $db->close();
 }
 ?>
