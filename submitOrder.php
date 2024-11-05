@@ -63,4 +63,4 @@
   echo "<script>alert('Payment successful. An email confirmation has been sent to your registered email address.');";
   echo "window.location = 'cart.php?".session_id()."';</script>";
   exit();
-?> 
+?>

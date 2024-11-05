@@ -1,8 +1,6 @@
 <?php
   session_start();
-  if (isset($_SESSION['token'])) {
-    $username = $_SESSION['username']; 
-  }
+
   if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
   }
@@ -35,7 +33,8 @@
       <header>
         <nav>
           <?php
-            if ($username) {
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username']; 
               echo "<div class=\"dropdown\">";
               echo "<button class=\"dropbtn\">$username</button>";
               echo "<div class=\"dropdown-content\">";

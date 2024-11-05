@@ -1,4 +1,9 @@
 <?php
+  session_start();
+
+  if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+  }
   require_once 'orderItems.php';
   $orderItemID = getOrderItemID();
   $orderItemProdID = getOrderItemProdID();
@@ -29,9 +34,23 @@
     <div id="wrapper">
       <header>
         <nav>
-          <a href="login.html">Login</a>&nbsp;&nbsp;&nbsp;
-          <a href="signUp.html">Sign Up</a>&nbsp;&nbsp;&nbsp;
-          <a href="admin.php">Admin</a>
+          <?php
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username']; 
+              echo "<div class=\"dropdown\">";
+              echo "<button class=\"dropbtn\">$username</button>";
+              echo "<div class=\"dropdown-content\">";
+              echo "<a href=\"#\">My Account</a>";
+              echo "<a href=\"#\">My Purchases</a>";
+              echo "<a href=\"logout.php\">Logout</a>";
+              echo "</div>";
+              echo "</div>";
+            } else {
+              echo "<a href=\"login.html\">Login</a>&nbsp;&nbsp;&nbsp";
+              echo "<a href=\"signUp.html\">Sign Up</a>";
+            }
+          ?>
+          &nbsp;&nbsp;&nbsp;<a href="admin.php">Admin</a>
         </nav>
         <div id="titlerow">
           <a href="index.php" id="title"><h1>SureShip</h1></a>
@@ -40,7 +59,7 @@
         </div>
       </header>
         <div class="content">
-            <h2>Shopping Cart</h2>
+            <h2>Admin Page</h2>
             <table border="1">
                 <tr>
                     <td><b>Order Item ID</b></td>
