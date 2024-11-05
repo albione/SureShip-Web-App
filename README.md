@@ -31,8 +31,8 @@ A Project for the course IE4727 - Web App Design
 - [x] \* F7.2: Products can be removed from the shopping cart.
 - [x] \* F7.3: Purchase quantity can be modified in the shopping cart.
 - [x] \* F7.4: Order summary and total amount payable are shown before placing an order.
-- [ ] \* F8.1: An acknowledgement message is shown upon a successful purchase.
-- [ ] \* F8.2: An email notification is sent upon a successful purchase.
+- [x] \* F8.1: An acknowledgement message is shown upon a successful purchase.
+- [x] \* F8.2: An email notification is sent upon a successful purchase.
 - [ ] \* F8.3: An error message is shown upon an unsuccessful purchase.
 - [ ] F9.1: Order history and shipping status can be viewed after login.
 - [ ] \* F9.2: An email notification is sent upon an update on shipping status.

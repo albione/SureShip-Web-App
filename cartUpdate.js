@@ -31,3 +31,13 @@ const calTotal = (length) => {
 window.onload = function () {
   calTotal(Number.MAX_SAFE_INTEGER);
 };
+
+const confirmOrder = () => {
+  if (confirm("Are you sure you want to order the items?")) {
+    alert(
+      "Order successful. An email confirmation has been sent to your registered email address."
+    );
+  } else {
+    event.preventDefault();
+  }
+};
