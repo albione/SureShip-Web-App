@@ -13,7 +13,14 @@
   if (isset($_GET['searchbar'])) {
     $keyword = $_GET['searchbar'];
     $prodID = getProdIDByName($keyword);
-  } else {
+  } else if (isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+    if ($sort == 'date') {
+      $sort = 'prod_date';
+    } 
+    $prodID = getProdIDSortBy($sort);
+  }
+  else {
     $prodID = getProdID();
   }
   $name = getName();
@@ -62,6 +69,16 @@
       </header>
       <div class="content">
         <h2>Product List</h2>
+        <div class="sort">
+          <form action="index.php" method="get" id="sortForm">
+            <select size="1" name="sort" id="sort">
+              <option value="price">Price</option>
+              <option value="date">Date</option>
+              <option value="rating">Rating</option>
+            </select>
+            <input type="submit" id="sortButton" value="Sort" />
+          </form>
+        </div>
         <?php
           for ($i = 0; $i < count($prodID); $i++) {
             $cur = $prodID[$i]-1;

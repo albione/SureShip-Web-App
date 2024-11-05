@@ -40,7 +40,7 @@
               echo "<div class=\"dropdown-content\">";
               echo "<a href=\"#\">My Account</a>";
               echo "<a href=\"#\">My Purchases</a>";
-              echo "<a href=\"#\">Logout</a>";
+              echo "<a href=\"logout.php\">Logout</a>";
               echo "</div>";
               echo "</div>";
             } else {

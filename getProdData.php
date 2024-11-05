@@ -34,6 +34,24 @@
         return $prodIDData;
     }
 
+    function getProdIDSortBy($sort) {
+        global $db;
+        if ($sort == 'price') {
+            $query = "SELECT prodID FROM products ORDER BY $sort ASC";
+        } else {
+            $query = "SELECT prodID FROM products ORDER BY $sort DESC";
+        }
+        $result = $db->query($query);   
+        $prodIDData = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $prodIDData[] = $row['prodID'];
+        }
+
+        $result->free();
+        return $prodIDData;
+    }
+
     function getName() {
         global $db;
         $query = "SELECT prod_name FROM products";

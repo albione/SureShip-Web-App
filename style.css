@@ -102,6 +102,10 @@ a:visited {
 .content a:visited {
   color: #555555;
 }
+.sort {
+  text-align: right;
+  margin-bottom: 20px;
+}
 .card {
   border: 1px solid #555555;
   padding: 1%;
