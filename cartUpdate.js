@@ -34,9 +34,7 @@ window.onload = function () {
 
 const confirmOrder = () => {
   if (confirm("Are you sure you want to order the items?")) {
-    alert(
-      "Order successful. An email confirmation has been sent to your registered email address."
-    );
+    void 0;
   } else {
     event.preventDefault();
   }

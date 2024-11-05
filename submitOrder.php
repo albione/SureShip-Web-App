@@ -25,18 +25,28 @@
     
     $prodID = intval($_POST['prodID'.$i]);
     $qty = intval($_POST['qty'.$i]);
-    $price = doubleval($_POST['price'.$i]);
-    $total += number_format($qty * $price, 2, '.', '');
 
-    $orderItem = $i+1 . ". " . $_POST['name'.$i] . ", $" . number_format($price, 2, '.', '') . ", " . 
-    $qty .  ", $" . number_format($qty * $price, 2, '.', '') . "\r\n" . "\r\n";
-    
-    $message .= $orderItem;
+    // To simulate unsuccessful payment only, user shouldn't be allowed to enter 0 (should be validated in frontend)
+    if ($qty == 0) {
+      echo "<script>alert('Payment unsuccessful. Please try again.');";
+      echo "window.location = 'cart.php?".session_id()."';</script>";
+      exit();
+    }
 
-    $query = "insert into order_items(prodID, itemQty, itemPrice, shipped) values(?, ?, ?, 0)"; 
-    $stmt = $db->prepare($query);
-    $stmt->bind_param('iid', $prodID, $qty, $price);
-    $stmt->execute();  
+    else {
+      $price = doubleval($_POST['price'.$i]);
+      $total += number_format($qty * $price, 2, '.', '');
+
+      $orderItem = $i+1 . ". " . $_POST['name'.$i] . ", $" . number_format($price, 2, '.', '') . ", " . 
+      $qty .  ", $" . number_format($qty * $price, 2, '.', '') . "\r\n" . "\r\n";
+      
+      $message .= $orderItem;
+
+      $query = "insert into order_items(prodID, itemQty, itemPrice, shipped) values(?, ?, ?, 0)"; 
+      $stmt = $db->prepare($query);
+      $stmt->bind_param('iid', $prodID, $qty, $price);
+      $stmt->execute();  
+    }
   }
 
   $to = 'f32ee@localhost';
@@ -50,6 +60,7 @@
 
   unset($_SESSION['cart']);
   emptyCartItems(session_id());
-  header('location: ' . 'cart.php'.'?'.SID);
+  echo "<script>alert('Payment successful. An email confirmation has been sent to your registered email address.');";
+  echo "window.location = 'cart.php?".session_id()."';</script>";
   exit();
 ?> 
