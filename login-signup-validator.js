@@ -23,7 +23,7 @@ function onSubmit(event) {
 
       if (status === "success") {
           document.cookie = `sessionToken=${message}; path=/; Secure; HttpOnly`;
-          alert("Login successful!");
+          window.location.href = "index.php";
       } else {
           alert(message); // Show the error message returned from the server
       }

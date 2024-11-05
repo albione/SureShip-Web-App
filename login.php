@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    $stmt = $db->prepare("SELECT userID, password FROM users WHERE username = ?");
+    $stmt = $db->prepare("SELECT username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if ($password == $user['password']) {
-            $token = $user['userID'];
-            $_SESSION['userID'] = $user['userID'];
-            $_SESSION['token'] = $token;
+            //$token = $user['username'];
+            $_SESSION['username'] = $user['username'];
+            //$_SESSION['token'] = $token;
 
             // Not allowed JSON :(
             //echo json_encode(["status" => "success", "token" => $token]);
