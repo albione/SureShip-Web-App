@@ -66,13 +66,14 @@ function validate_username(event) {
  
   if (!regexName.test(username.value)) {
     isValidUsername = false;
-    alert("The username you entered (" + name.value + 
+    alert("The username you entered (" + username.value + 
           ") is not in the correct form. \nThe name must only contain alphabets, and spaces. \n");
     username.focus();
     username.select();
     document.getElementById("usernameErrorMsg").innerHTML = "Invalid. Only alphabets and spaces";
 	  return false;
   }
+  document.getElementById("usernameErrorMsg").innerHTML = "";
   isValidUsername = true;
   check_submit_button();
 }
