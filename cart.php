@@ -27,19 +27,18 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="cartUpdate.js"></script>
-    
   </head>
   <body>
     <div id="wrapper">
       <header>
         <nav>
           <a href="login.html">Login</a>&nbsp;&nbsp;&nbsp;
-          <a href="signUp.html">Sign Up</a>
+          <a href="signUp.html">Sign Up</a>&nbsp;&nbsp;&nbsp;
+          <a href="admin.php">Admin</a>
         </nav>
         <div id="titlerow">
           <a href="index.php" id="title"><h1>SureShip</h1></a>
           <input type="text" placeholder="Search for products..." size="60%" id="searchbar" />
-          <!-- <img src="assets/magnify-custom.png" width="30" alt="search" /> -->
           <a href="cart.php"><img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/></a>
         </div>
       </header>
@@ -63,10 +62,10 @@
                   $curPrice = doubleval($price[$_SESSION['cart'][$i]]);
                   $curTotal = $curPrice * $qty[$i];
                   $curProdID = $prodID[$_SESSION['cart'][$i]];
-                  echo"<tr>";
-                  echo"<td><img src=".$curImgPath." width='150px'/></td>";
-                  echo"<td>".$curName."</td>";
-                  echo"<td>\$".number_format($curPrice, 2, '.', '')."</td>";
+                  echo "<tr>";
+                  echo "<td><img src=".$curImgPath." width='150px'/></td>";
+                  echo "<td>".$curName."</td>";
+                  echo "<td>\$".number_format($curPrice, 2, '.', '')."</td>";
                   echo "<td><input type='text' name='qty".$i."' id='qty".$i."' value=$qty[$i] autocomplete='off' size='1' oninput='calPrice($i, $curPrice, $length)'/></td>";
                   echo "<td>\$ <input type='text' name='total".$i."' id='total".$i."' value='".number_format($curTotal, 2, '.', '')."' autocomplete='off' size='5' disabled/></td>";
                   echo "<td><a href='".$_SERVER['PHP_SELF']."?remove=$i&prodID=$curProdID'><input type='button' id='remove".$i."' value='Remove'/></a></td>";

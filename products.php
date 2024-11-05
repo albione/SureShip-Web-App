@@ -32,12 +32,12 @@
       <header>
         <nav>
           <a href="login.html">Login</a>&nbsp;&nbsp;&nbsp;
-          <a href="signUp.html">Sign Up</a>
+          <a href="signUp.html">Sign Up</a>&nbsp;&nbsp;&nbsp;
+          <a href="admin.php">Admin</a>
         </nav>
         <div id="titlerow">
           <a href="index.php" id="title"><h1>SureShip</h1></a>
           <input type="text" placeholder="Search for products..." size="60%" id="searchbar" />
-          <!-- <img src="assets/magnify-custom.png" width="30" alt="search" /> -->
           <a href="cart.php"><img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/></a>
         </div>
       </header>
