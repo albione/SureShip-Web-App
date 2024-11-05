@@ -62,6 +62,9 @@ a:visited {
   width: fit-content;
   padding: 2rem;
 }
+#signUpCont {
+    top: 20%;
+}
 .form-title {
   display: flex;
   margin-bottom: 1rem;
@@ -70,7 +73,7 @@ a:visited {
 }
 .form-input {
   display: flex;
-  margin: 1rem 0;
+  margin: 1.5rem 0 0 0;
   padding: 1rem 1rem;
 }
 .form-button {
@@ -80,14 +83,24 @@ a:visited {
   font-size: 1.1em;
   width: 100%;
   padding: 1rem 0;
+  margin-top: 1.5rem;
   border: unset;
 }
 .form-button:hover {
   background-color: #ee755d;
   cursor: pointer;
 }
+.form-button:disabled {
+    background-color: #ee755d;
+    cursor: default;
+}
 .form-footer {
   margin-top: 2.5rem;
   text-align: center;
   font-size: 0.9em;
+}
+.error-msg {
+    position: absolute;
+    font-size: 0.8em;
+    color: red;
 }

@@ -11,14 +11,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+    $stmt = $db->prepare("SELECT username FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $stmt->bind_param("sss", $username, $password, $email);
-
-    if ($stmt->execute()) {
-        echo "alert(\"New user created successfully.\");";
+    if ($result->num_rows >= 1) {
+        echo "signup;error;Username already exists. Please choose a different username.";
     } else {
-        echo "Error: " . $stmt->error;
+        $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+
+        $stmt->bind_param("sss", $username, $password, $email);
+
+        if ($stmt->execute()) {
+            echo "signup;success;Account creation successful! You can now log in.";
+        } else {
+            echo "signup;error;" . $stmt->error;
+        }
     }
 
     $stmt->close();
