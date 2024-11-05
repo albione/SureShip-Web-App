@@ -28,14 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //echo json_encode(["status" => "success", "token" => $token]);
 
             // Return plain text instead
-            echo "success;$username";
+            echo "login;success;$username";
         } else {
             //echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
-            echo "error;Invalid credentials";
+            echo "login;error;Wrong username or password.";
         }
     } else {
         //echo json_encode(["status" => "error", "message" => "User not found"]);
-        echo "error;User not found";
+        echo "login;error;Wrong username or password";
     }
     
     $stmt->close();
