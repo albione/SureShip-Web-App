@@ -168,12 +168,11 @@ footer {
 }
 table {
   margin: auto;
-  margin-top: 2%;
   border: none;
   padding: 1%;
 }
 td {
-  padding: 10px;
+  padding: 10px 18px;
   border-color: #555555;
 }
 #totalRow {
