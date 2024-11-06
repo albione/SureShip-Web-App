@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    $stmt = $db->prepare("SELECT username, password FROM users WHERE username = ?");
+    $stmt = $db->prepare("SELECT userID, username, password FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (password_verify($password, $user['password'])) {
             $username = $user['username'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['userID'] = $user['userID'];
             //$_SESSION['token'] = $token;
 
             // Not allowed JSON :(

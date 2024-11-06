@@ -2,6 +2,8 @@ use sureship;
 
 drop table if exists users;
 drop table if exists products;
+drop table if exists cart_items;
+drop table if exists order_items;
 
 create table users
 (  userID int unsigned not null auto_increment primary key,

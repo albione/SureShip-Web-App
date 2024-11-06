@@ -25,7 +25,7 @@ A Project for the course IE4727 - Web App Design
 - [x] F5.1: Preferred sorting options can be selected via a dropdown menu.
 - [x] F6.1: User accounts can be created to save personal details.
 - [x] F6.2: User accounts can be logged in with the correct username and password.
-- [ ] F6.3: Username and password can be modified after login.
+- [x] F6.3: Username and password can be modified after login.
 - [x] F6.4: Shipping address can be added/modified/removed after login.
 - [x] \* F7.1: Products can be added to the shopping cart.
 - [x] \* F7.2: Products can be removed from the shopping cart.
