@@ -13,10 +13,6 @@ create table users
    address varchar(255)
 );
 
-insert into users values
-  (1, "johndoe", "johndoe@gmail.com", "12341234", "666 Hell Street Lucifer Block 69 #66-99, Graveyard, 696969"),
-  (2, "janedoe", "janedoe@gmail.com", "43214321", "777 Holy Street Michael Block 77 #7-7, Heaven, 121212");
-
 create table products
 (  prodID int unsigned not null auto_increment primary key,
    prod_name varchar(255),
