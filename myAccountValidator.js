@@ -1,4 +1,4 @@
-var form = document.querySelector("form");
+var form = document.getElementById("updateAccount");
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 var email = document.getElementById("email");
@@ -17,33 +17,33 @@ var isValidEmail = true;
 var isValidPassword = false;
 
 if (address.value.trim()) {
-    var isValidAddress = true;
+  var isValidAddress = true;
 } else {
-    var isValidAddress = false;
+  var isValidAddress = false;
 }
 
 function onSubmit(event) {
-  event.preventDefault(); 
+  event.preventDefault();
   const formData = new FormData(form);
 
   fetch("myAccountUpdate.php", {
-      method: "POST",
-      body: formData
+    method: "POST",
+    body: formData,
   })
-  .then(response => response.text())
-  .then(data => {
-    // Optionally handle response, e.g., display a success message
-    const [status,message] = data.split(";");
-    if (status === "success") {
+    .then((response) => response.text())
+    .then((data) => {
+      // Optionally handle response, e.g., display a success message
+      const [status, message] = data.split(";");
+      if (status === "success") {
         alert(message);
         window.location.href = "myAccount.php";
-    } else {
+      } else {
         alert(message);
-    }
+      }
     })
-  .catch(error => {
+    .catch((error) => {
       console.error("Error:", error);
-  });
+    });
 }
 
 function validate_username(event) {
@@ -72,15 +72,19 @@ function validate_email(event) {
   if (!regexEmail.test(email.value)) {
     isValidEmail = false;
     check_save_button();
-    alert("The email you entered (" + email.value + 
-      ") is not in the correct form. \n" +
-      "The user name part can  only contain word characters including hyphen (\"-\") and period (\".\").\n" +
-      "The domain name contains two to four address extensions. \n" +
-      "Each extension is string of word characters and separated from the others by a period (\".\").\n" +
-      "The last extension must have two to three characters only. \n");
+    alert(
+      "The email you entered (" +
+        email.value +
+        ") is not in the correct form. \n" +
+        'The user name part can  only contain word characters including hyphen ("-") and period (".").\n' +
+        "The domain name contains two to four address extensions. \n" +
+        'Each extension is string of word characters and separated from the others by a period (".").\n' +
+        "The last extension must have two to three characters only. \n"
+    );
     email.focus();
     email.select();
-    document.getElementById("emailErrorMsg").innerHTML = "Invalid email format.";
+    document.getElementById("emailErrorMsg").innerHTML =
+      "Invalid email format.";
     return false;
   }
   isValidEmail = true;
@@ -89,37 +93,38 @@ function validate_email(event) {
 }
 
 function validate_password(event) {
-    if (password.value) {
-        isValidPassword = true;
-        check_save_button();
-        document.getElementById("passwordErrorMsg").innerHTML = "";
-        check_save_button();
-        return true;
-      }
-      isValidPassword = false;
-      check_save_button();
-      alert("Your password must not be empty.");
-      password.focus();
-      password.select();
-      document.getElementById("passwordErrorMsg").innerHTML = "Your password must not be empty.";
-      return false;
-}
-
-
-function validate_address(event) {
-    var address = event.currentTarget;
-  
-    if (address.value.trim() === "") {
-        isValidAddress = false;
-        check_save_button();
-        alert ("Address field cannot be empty.");
-        document.getElementById("addressErrorMsg").innerHTML = "Your address must not be empty.";
-        return false;
-    }
-    isValidAddress = true;
-    document.getElementById("addressErrorMsg").innerHTML = "";
+  if (password.value) {
+    isValidPassword = true;
+    check_save_button();
+    document.getElementById("passwordErrorMsg").innerHTML = "";
     check_save_button();
     return true;
+  }
+  isValidPassword = false;
+  check_save_button();
+  alert("Your password must not be empty.");
+  password.focus();
+  password.select();
+  document.getElementById("passwordErrorMsg").innerHTML =
+    "Your password must not be empty.";
+  return false;
+}
+
+function validate_address(event) {
+  var address = event.currentTarget;
+
+  if (address.value.trim() === "") {
+    isValidAddress = false;
+    check_save_button();
+    alert("Address field cannot be empty.");
+    document.getElementById("addressErrorMsg").innerHTML =
+      "Your address must not be empty.";
+    return false;
+  }
+  isValidAddress = true;
+  document.getElementById("addressErrorMsg").innerHTML = "";
+  check_save_button();
+  return true;
 }
 
 function check_save_button() {
