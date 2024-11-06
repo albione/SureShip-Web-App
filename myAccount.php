@@ -37,7 +37,6 @@
               echo "<button class=\"dropbtn\">$username</button>";
               echo "<div class=\"dropdown-content\">";
               echo "<a href=\"myAccount.php\">My Account</a>";
-              echo "<a href=\"#\">My Purchases</a>";
               echo "<a href=\"logout.php\">Logout</a>";
               echo "</div>";
               echo "</div>";
@@ -46,7 +45,9 @@
         </nav>
         <div id="titlerow">
           <a href="index.php" id="title"><h1>SureShip</h1></a>
-          <input type="text" placeholder="Search for products..." size="60%" id="searchbar" />
+          <form action="index.php" method="get" id="searchForm">
+              <input type="text" placeholder="Search for products..." size="60%" id="searchbar" name="searchbar" />
+          </form>
           <a href="cart.php"><img src="assets/cart-outline.png" width="30" alt="cart" id="cart"/></a>
         </div>
       </header>
@@ -55,12 +56,11 @@
           <label id="left-container-username"><?php echo $userData['username']?></label>
           <ul>
             <li><a href="myAccount.php" class="">My Account</a></li>
-            <li><a href="myPurchases.php">My Purchases</a></li>
         </div>
         <div class="right-container">
           <h1 id="content-h1">My Account</h1>
           <h3>Manage my account details</h3>
-          <form action="myAccountUpdate.php" method="post">
+          <form action="myAccountUpdate.php" method="post" id="updateAccount">
             <div class="user-data">
               <label class="user-data-label">Username:</label>
               <div class="user-data-input">
