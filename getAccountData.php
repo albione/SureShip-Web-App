@@ -6,7 +6,7 @@ function getUserData($username) {
         echo "Error: Could not connect to database.  Please try again later.";
         exit;
     }
-    $stmt = $db->prepare("SELECT username, email, address FROM users WHERE username = ?");
+    $stmt = $db->prepare("SELECT userID, username, email, address FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();

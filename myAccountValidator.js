@@ -6,13 +6,15 @@ var address = document.getElementById("address");
 var saveBtn = document.getElementById("saveBtn");
 
 form.addEventListener("submit", onSubmit);
+username.addEventListener("change", validate_username);
 password.addEventListener("change", validate_password);
 address.addEventListener("change", validate_address);
 email.addEventListener("change", validate_email);
 
 // validation check flag
+var isValidUsername = true;
 var isValidEmail = true;
-var isValidPassword = true;
+var isValidPassword = false;
 
 if (address.value.trim()) {
     var isValidAddress = true;
@@ -43,6 +45,25 @@ function onSubmit(event) {
       console.error("Error:", error);
   });
 }
+
+function validate_username(event) {
+    var regexName = /^[a-z\s]+$/i;
+    var username = event.currentTarget;
+   
+    if (!regexName.test(username.value)) {
+      isValidUsername = false; 
+      check_save_button();
+      alert("The username you entered (" + username.value + 
+            ") is not in the correct form. \nThe name must only contain alphabets, and spaces. \n");
+      username.focus();
+      username.select();
+      document.getElementById("usernameErrorMsg").innerHTML = "Invalid username. Only alphabets and spaces";
+        return false;
+    }
+    document.getElementById("usernameErrorMsg").innerHTML = "";
+    isValidUsername = true;
+    check_save_button();
+  }
 
 function validate_email(event) {
   var regexEmail = /^[\w.-]+@([\w]+\.){1,3}[\w]{2,3}$/;

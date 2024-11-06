@@ -63,13 +63,15 @@
           <form action="myAccountUpdate.php" method="post">
             <div class="user-data">
               <label class="user-data-label">Username:</label>
+              <div class="user-data-input">
               <input type="text"
                 name="username"
                 id="username"
                 class="form-input"
                 value="<?php echo $userData['username']; ?>"
-                size="30"
-                disabled/>
+                size="30"/>
+              <label class="error-msg" id="usernameErrorMsg"></label>
+              </div>
             </div>
             <div class="user-data">
               <label class="user-data-label">Email:</label>
