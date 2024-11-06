@@ -5,7 +5,7 @@ drop table if exists products;
 
 create table users
 (  userID int unsigned not null auto_increment primary key,
-   username varchar(255),
+   username varchar(255) unique,
    email varchar(255),
    password varchar(255),
    address varchar(255)

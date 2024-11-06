@@ -1,0 +1,106 @@
+body {
+  background-color: #fbfbfb;
+}
+#wrapper {
+  background-color: white;
+  color: #555555;
+  width: 100%;
+  margin: 0;
+  min-width: 800px;
+  text-align: center;
+}
+header {
+  background-color: #fbfbfb;
+  color: #ee4d2d;
+  font-family: "Georgia", "Times", "Times New Roman", serif;
+  padding-top: 1%;
+  padding-bottom: 0.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+a {
+  text-decoration: none;
+  color: #ee4d2d;
+}
+a:link {
+  color: #ee4d2d;
+}
+a:visited {
+  color: #ee4d2d;
+}
+.content a:visited {
+  color: #ee4d2d;
+}
+#titlerow {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 0;
+}
+.header-title {
+  padding-left: 4rem;
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+.content {
+  padding: 0px;
+  text-align: left;
+}
+.content a:link {
+  color: #ee4d2d;
+  text-decoration: underline;
+}
+.form-container {
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  width: fit-content;
+  padding: 2rem;
+}
+#signUpCont {
+    top: 20%;
+}
+.form-title {
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.form-input {
+  display: flex;
+  margin: 1.5rem 0 0 0;
+  padding: 1rem 1rem;
+}
+.form-button {
+  display: flex;
+  background-color: #ee4d2d;
+  color: white;
+  font-size: 1.1em;
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+  border: unset;
+}
+.form-button:hover {
+  background-color: #ee755d;
+  cursor: pointer;
+}
+.form-button:disabled {
+    background-color: #ee755d;
+    cursor: default;
+}
+.form-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.9em;
+}
+.error-msg {
+    position: absolute;
+    font-size: 0.8em;
+    color: red;
+}

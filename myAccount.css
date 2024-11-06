@@ -1,0 +1,68 @@
+.content {
+    display: flex;
+}
+.left-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    width: 15em;
+}
+#left-container-username {
+    text-align: left;
+    font-size: 1.25em;
+    margin-left: 2em;
+    margin-top: 2em;
+}
+ul {
+    font-size: 1.25em;
+    text-align: left;
+    padding-inline-start: 2em;
+}
+li {
+    margin: 1em 0;
+}
+.right-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 15em);
+    border: black 2px solid;
+    margin: 1em;
+    padding-left: 2em;
+    padding-bottom: 2em;
+    text-align: left;
+}
+#content-h1 {
+    margin-block-start: 0.75em;
+    margin-block-end: 0;
+}
+.user-data {
+    display: flex;
+    padding: 1em 1.5em 1.5em 0;
+}
+.user-data-input {
+    display: block;
+}
+.user-data-label {
+    width: 10em;
+}
+.save-btn {
+    margin-left: 12em;
+    padding: 0.5em 1.5em;
+    background-color: #ee4d2d;
+    color: white;
+}
+.save-btn:hover {
+    background-color: #ee755d;
+    cursor: pointer;
+}
+.save-btn:disabled {
+    background-color: #ee755d;
+    cursor: default;
+}
+.error-msg {
+    display: block;
+    position: absolute;
+    font-size: 0.8em;
+    color: red;
+    margin-top: 0.25em;
+}

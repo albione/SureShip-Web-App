@@ -47,7 +47,7 @@
               echo "<div class=\"dropdown\">";
               echo "<button class=\"dropbtn\">$username</button>";
               echo "<div class=\"dropdown-content\">";
-              echo "<a href=\"#\">My Account</a>";
+              echo "<a href=\"myAccount.php\">My Account</a>";
               echo "<a href=\"#\">My Purchases</a>";
               echo "<a href=\"logout.php\">Logout</a>";
               echo "</div>";
