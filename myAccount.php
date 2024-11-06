@@ -66,7 +66,8 @@
               <input type="text"
                 name="username"
                 id="username"
-                value=<?php echo $userData['username']; ?>
+                class="form-input"
+                value="<?php echo $userData['username']; ?>"
                 size="30"
                 disabled/>
             </div>
@@ -76,7 +77,8 @@
                 <input type="text" 
                   name="email"
                   id="email"
-                  value=<?php echo $userData['email']; ?>
+                  class="form-input"
+                  value="<?php echo $userData['email']; ?>"
                   size="30"
                   required/>
                 <label class="error-msg" id="emailErrorMsg"></label>
@@ -88,7 +90,8 @@
                 <input type="password"
                   name="password"
                   id="password"
-                  value=<?php echo $userData['password']; ?>
+                  class="form-input"
+                  value=""
                   size="30"
                   required/>
                 <label class="error-msg" id="passwordErrorMsg"></label>
@@ -99,9 +102,8 @@
               <div class="user-data-input">
                 <textarea type="textarea" rows="4" cols="40"
                   name="address"
-                  id="address"
-                  value=<?php echo $userData['address']; ?>>
-                </textarea>
+                  class="form-input"
+                  id="address"><?php echo $userData['address']; ?></textarea>
                 <label class="error-msg" id="addressErrorMsg"></label>
               </div>
             </div>

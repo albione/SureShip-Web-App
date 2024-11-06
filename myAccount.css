@@ -38,6 +38,7 @@ li {
 .user-data {
     display: flex;
     padding: 1em 1.5em 1.5em 0;
+    align-items: center;
 }
 .user-data-input {
     display: block;
@@ -45,11 +46,15 @@ li {
 .user-data-label {
     width: 10em;
 }
+.form-input {
+    padding: 1rem 1rem;
+}
 .save-btn {
     margin-left: 12em;
-    padding: 0.5em 1.5em;
+    padding: 0.75em 1.5em;
     background-color: #ee4d2d;
     color: white;
+    border: unset;
 }
 .save-btn:hover {
     background-color: #ee755d;
@@ -65,4 +70,5 @@ li {
     font-size: 0.8em;
     color: red;
     margin-top: 0.25em;
+    border: unset;
 }
