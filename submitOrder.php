@@ -4,12 +4,23 @@
     $_SESSION['cart'] = [];
   }
   require_once 'cartItems.php';
+  require_once 'getAccountData.php';
 
   @ $db = new mysqli('localhost', 'root', '', 'sureship');
 
   if (mysqli_connect_errno()) {
      echo "Error: Could not connect to database.  Please try again later.";
      exit;
+  }
+
+  $username = $_SESSION['username'];
+
+  $address = getUserData($username)["address"];
+
+  if($address === null) {
+    echo "<script>alert('Shipping address not available. Please update on My Account page.');";
+    echo "window.location = 'myAccount.php?".session_id()."';</script>";
+    exit();
   }
 
   $message = "Your order has been confirmed." . "\r\n" . "\r\n"

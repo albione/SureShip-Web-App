@@ -1,11 +1,16 @@
 <?php
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+    require_once 'getAccountData.php';
+
     @ $db = new mysqli('localhost', 'root', '', 'sureship');
 
     if (mysqli_connect_errno()) {
         echo "Error: Could not connect to database.  Please try again later.";
         exit;
     }
-
+    
     function getOrderItemID() {
         global $db;
         $query = "SELECT orderItemID FROM order_items";
@@ -83,10 +88,14 @@
         $stmt->bind_param("i", $orderItemID);
         $stmt->execute();
 
-        
+        $username = $_SESSION['username'];
+        $address = getUserData($username)["address"];
+
         $to = 'f32ee@localhost';
         $subject = 'Shipping Status Update';
-        $message = "Your order \"$curName\" has been shipped." . "\r\n" . "\r\n" . "Thank you for shopping with us!";
+        $message = "Your order \"$curName\" has been shipped to your address." . "\r\n" . "\r\n" . 
+        "Your address: " . $address . "\r\n" . "\r\n" . 
+        "Thank you for shopping with us!";
         $headers = 'From: f32ee@localhost' . "\r\n" .
             'Reply-To: f32ee@localhost' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
