@@ -16,17 +16,19 @@ if (mysqli_connect_errno()) {
     exit;
 }
 $username = $_SESSION['username'];
+$usernameToChange = trim($_POST['username']);
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 $address = trim($_POST['address']);
 
-$stmt = $db->prepare("UPDATE users SET email = ?, password = ?, address = ? WHERE username = ?");
+$stmt = $db->prepare("UPDATE users SET username = ?, email = ?, password = ?, address = ? WHERE username = ?");
 if ($stmt) {
     // Hash the password (if you plan to store it hashed)
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $stmt->bind_param("ssss", $email, $hashedPassword, $address, $username);
+    $stmt->bind_param("sssss", $usernameToChange, $email, $hashedPassword, $address, $username);
     
     if ($stmt->execute()) {
+        $_SESSION['username'] = $usernameToChange;
         echo "success;Your account information has been updated successfully!";
     } else {
         echo "error;Error updating your account information. Please try again.";

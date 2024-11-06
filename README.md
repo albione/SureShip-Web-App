@@ -11,7 +11,7 @@ A Project for the course IE4727 - Web App Design
 - [x] R3: Users can search for products with keywords.
 - [ ] R4: Users can filter products by price range, brands and ratings.
 - [x] R5: Users can sort products by price, date and ratings.
-- [ ] R6: Users can save their personal details for purchases.
+- [x] R6: Users can save their personal details for purchases.
 - [x] \* R7: Users can place orders to make purchases.
 - [x] \* R8: Users are acknowledged after making successful purchases.
 - [x] \* R9: Users are updated on their order status.
@@ -25,8 +25,8 @@ A Project for the course IE4727 - Web App Design
 - [x] F5.1: Preferred sorting options can be selected via a dropdown menu.
 - [x] F6.1: User accounts can be created to save personal details.
 - [x] F6.2: User accounts can be logged in with the correct username and password.
-- [ ] F6.3: Username and password can be modified after login.
-- [ ] F6.4: Shipping address can be added/modified/removed after login.
+- [x] F6.3: Username and password can be modified after login.
+- [x] F6.4: Shipping address can be added/modified/removed after login.
 - [x] \* F7.1: Products can be added to the shopping cart.
 - [x] \* F7.2: Products can be removed from the shopping cart.
 - [x] \* F7.3: Purchase quantity can be modified in the shopping cart.
