@@ -1,45 +1,79 @@
 <?php
-session_start();
+  session_start();
+  
+  $loginFailed = false;
 
-@ $db = new mysqli('localhost', 'root', '', 'sureship');
-
-if (mysqli_connect_errno()) {
-    echo "Error: Could not connect to database.  Please try again later.";
-    exit;
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    
-    $stmt = $db->prepare("SELECT userID, username, password FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $username = $user['username'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['userID'] = $user['userID'];
-            //$_SESSION['token'] = $token;
-
-            // Not allowed JSON :(
-            //echo json_encode(["status" => "success", "token" => $token]);
-
-            // Return plain text instead
-            echo "login;success;$username";
-        } else {
-            //echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
-            echo "login;error;Wrong username or password.";
-        }
-    } else {
-        //echo json_encode(["status" => "error", "message" => "User not found"]);
-        echo "login;error;Wrong username or password";
+  if (isset($_SESSION['username'])) {
+    echo "<script> window.location.href = 'index.php'; </script>";
+    exit();
+  }
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once 'login-be.php';
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      
+      if (login($username, $password)) {
+        echo "<script> window.location.href = 'index.php'; </script>";
+        exit();
+      } else {
+          echo "<script> alert('Wrong username or password.'); </script>";
+      }
     }
-    
-    $stmt->close();
-    $db->close();
-}
+  }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SureShip</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loginSignup.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <div id="titlerow">
+          <a href="index.php"><h1>SureShip</h1></a>
+          <label class="header-title">Log In</label>
+        </div>
+      </header>
+      <div class="content">
+        <img src="./assets/login-signup-bg.jpg" width="100%" />
+        <!--source: https://png.pngtree.com/thumb_back/fh260/background/20211217/pngtree-advertising-promotion-e-commerce-poster-special-page-taobao-drill-exhibition-material-image_922958.jpg-->
+        <div class="form-container">
+          <form action="login.php" method="post">
+            <label class="form-title">Log In</label>
+            <input
+              type="text"
+              class="form-input"
+              name="username"
+              id="username"
+              size="30"
+              required
+              placeholder="Enter your username"
+            />
+            <input
+              type="password"
+              class="form-input"
+              name="password"
+              id="password"
+              size="30"
+              required
+              placeholder="Enter your password"
+            />
+            <input class="form-button" id="submitBtn" type="submit" value="Log In"/>
+          </form>
+          <div class="form-footer">
+            <label>Not a member? </label><a href="signup.php">Sign Up</a>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>&copy 2024 SureShip. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+  <script type="text/javascript" src="loginSignupValidator.js"></script>
+</html>

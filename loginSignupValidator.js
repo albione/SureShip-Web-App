@@ -3,8 +3,6 @@ var username = document.getElementById("username");
 var password = document.getElementById("password");
 var submitBtn = document.getElementById("submitBtn");
 
-form.addEventListener("submit", onSubmit);
-
 // validation check flag
 var isValidUsername = false;
 var isValidEmail = false;
@@ -19,44 +17,6 @@ if (document.getElementById("signUp")) {
   password.addEventListener("change", validate_password);
   confpassword.addEventListener("change", validate_password);
   email.addEventListener("change", validate_email);
-}
-
-function onSubmit(event) {
-  event.preventDefault(); 
-  const formData = new FormData(form);
-
-  if(document.getElementById("signUp")) {
-    url = "signup.php";
-  } else {
-    url = "login.php";
-  }
-
-  fetch(url, {
-      method: "POST",
-      body: formData
-  })
-  .then(response => response.text())
-  .then(data => {
-    // Optionally handle response, e.g., display a success message
-    const [type, status,message] = data.split(";");
-    if (type === "login") {
-      if (status === "success") {
-        document.cookie = `sessionToken=${message}; path=/; Secure; HttpOnly`;
-        window.location.href = "index.php";
-      } else {
-        alert(message);
-      }
-    }
-    if (type === "signup") {
-      alert(message);
-      if (status === "success") {
-        window.location.href = "login.html";
-      }
-    }
-  })
-  .catch(error => {
-      console.error("Error:", error);
-  });
 }
 
 function validate_username(event) {

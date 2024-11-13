@@ -43,8 +43,8 @@
               echo "</div>";
               echo "</div>";
             } else {
-              echo "<a href=\"login.html\">Login</a>&nbsp;&nbsp;&nbsp;";
-              echo "<a href=\"signUp.html\">Sign Up</a>";
+              echo "<a href=\"login.php\">Login</a>&nbsp;&nbsp;&nbsp;";
+              echo "<a href=\"signUp.php\">Sign Up</a>";
             }
           ?>
           &nbsp;&nbsp;<a href="admin.php">Admin</a>

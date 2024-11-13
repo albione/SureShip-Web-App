@@ -3,7 +3,7 @@
   if (!isset($_SESSION['username'])) {
     echo "<script>
         alert('You must be logged in to access this page.');
-        window.location.href = 'login.html';
+        window.location.href = 'login.php';
     </script>";
     exit();
   } else {
@@ -17,8 +17,20 @@
     header('location: ' . $_SERVER['PHP_SELF'].'?'.SID);
     exit();
   }
-  require_once 'getAccountData.php';
+  require_once 'userAccountUpdate.php';
   $userData = getUserData($username);
+
+  //updateUserData(username, usernameToChange, email, password, address)
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['address'])) {
+      $usernameToChange = $_POST['username'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $address = $_POST['address'];
+      
+      updateUserData($username, $usernameToChange, $email, $password, $address);
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +72,7 @@
         <div class="right-container">
           <h1 id="content-h1">My Account</h1>
           <h3>Manage my account details</h3>
-          <form action="myAccountUpdate.php" method="post" id="updateAccount">
+          <form action="myAccount.php" method="post" id="updateAccount">
             <div class="user-data">
               <label class="user-data-label">Username:</label>
               <div class="user-data-input">

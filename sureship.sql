@@ -1,3 +1,5 @@
+drop database if exists sureship;
+create database sureship;
 use sureship;
 
 drop table if exists users;

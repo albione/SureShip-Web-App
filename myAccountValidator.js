@@ -5,7 +5,6 @@ var email = document.getElementById("email");
 var address = document.getElementById("address");
 var saveBtn = document.getElementById("saveBtn");
 
-form.addEventListener("submit", onSubmit);
 username.addEventListener("change", validate_username);
 password.addEventListener("change", validate_password);
 address.addEventListener("change", validate_address);
@@ -20,30 +19,6 @@ if (address.value.trim()) {
   var isValidAddress = true;
 } else {
   var isValidAddress = false;
-}
-
-function onSubmit(event) {
-  event.preventDefault();
-  const formData = new FormData(form);
-
-  fetch("myAccountUpdate.php", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      // Optionally handle response, e.g., display a success message
-      const [status, message] = data.split(";");
-      if (status === "success") {
-        alert(message);
-        window.location.href = "myAccount.php";
-      } else {
-        alert(message);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
 }
 
 function validate_username(event) {
