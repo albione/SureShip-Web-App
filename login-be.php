@@ -16,22 +16,13 @@ function login($username, $password) {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
-            //$username = $user['username'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['userID'] = $user['userID'];
-            //$_SESSION['token'] = $token;
-
-            // Not allowed JSON :(
-            //echo json_encode(["status" => "success", "token" => $token]);
-
-            // Return plain text instead
             return true;
         } else {
-            //echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
             return false;
         }
     } else {
-        //echo json_encode(["status" => "error", "message" => "User not found"]);
         return false;
     }
     
