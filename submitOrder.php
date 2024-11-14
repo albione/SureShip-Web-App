@@ -4,7 +4,7 @@
     $_SESSION['cart'] = [];
   }
   require_once 'cartItems.php';
-  require_once 'getAccountData.php';
+  require_once 'userAccountUpdate.php';
 
   @ $db = new mysqli('localhost', 'root', '', 'sureship');
 
