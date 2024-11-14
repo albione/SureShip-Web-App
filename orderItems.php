@@ -2,7 +2,7 @@
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
-    require_once 'getAccountData.php';
+    require_once 'userAccountUpdate.php';
 
     @ $db = new mysqli('localhost', 'root', '', 'sureship');
 
