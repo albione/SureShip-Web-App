@@ -3,11 +3,6 @@
   if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
   }
-  if (isset($_GET['buy'])) {
-    $_SESSION['cart'][] = $_GET['buy'];
-    header('location: ' . $_SERVER['PHP_SELF'].'?'.SID);
-    exit();
-  }
   require_once 'getProdData.php';
   if (isset($_GET['searchbar'])) {
     $keyword = $_GET['searchbar'];
@@ -26,7 +21,6 @@
   $price = getPrice();
   $rating = getRating();
   $imgPath = getImgPath();
-
 ?>
 
 <!DOCTYPE html>
